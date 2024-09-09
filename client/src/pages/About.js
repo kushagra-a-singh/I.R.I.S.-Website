@@ -1,29 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header'; // Adjust path as needed
-import './About.css';
+import Header from '../components/Header'; // Adjust the path if necessary
+import styles from './About.module.css'; // Import the CSS module
 import backgroundVideo from './vid2.mp4'; // Import the background video file
 
-function AboutUs() {
+function About() {
   return (
-    <div className="about-us">
-      <div className="video-background">
+    <div className={styles.aboutUs}>
+      <div className={styles.videoBackground}>
         <video autoPlay muted loop>
           <source src={backgroundVideo} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
-      <div className="overlay"></div>
+      <div className={styles.overlay}></div>
       
       <Header />
       
-      <main className="content py-5">
+      <main className={styles.content + ' py-5'}>
         <div className="container">
-          <h1 className="title">About I.R.I.S</h1>
-          <p className="title-desc">I.R.I.S (Innovation Research & Intelligence Support) is a tech club dedicated to fostering innovation and supporting research in the field of technology.</p>
+          <h1 className={styles.title}>About I.R.I.S</h1>
+          <p className={styles.titleDesc}>I.R.I.S (Innovation Research & Intelligence Support) is a tech club dedicated to fostering innovation and supporting research in the field of technology.</p>
           <div className="row">
             <div className="col-md-6">
-              <div className="contact-info p-4">
+              <div className={styles.contactInfo + ' p-4'}>
                 <h2>Contact Information</h2>
                 <p>Email: iris@mitwpu.edu.in</p>
                 <p>Phone: +91 7715958053</p>
@@ -31,7 +31,7 @@ function AboutUs() {
               </div>
             </div>
             <div className="col-md-6">
-              <div className="mission p-4">
+              <div className={styles.mission + ' p-4'}>
                 <h2>Our Mission</h2>
                 <h4>To provide a platform for tech enthusiasts to:</h4>
                 <h5>* Collaborate</h5>
@@ -40,11 +40,11 @@ function AboutUs() {
               </div>
             </div>
           </div>
-          <div className="vision p-4">
+          <div className={styles.vision + ' p-4'}>
             <h2>Our Vision</h2>
             <p>To be the leading tech community that drives technological advancements and shapes the future of innovation.</p>
           </div>
-          <div className="team-members p-4">
+          <div className={styles.teamMembers + ' p-4'}>
             <h2>Team Members</h2>
             <p>Person info with roles to be added.</p>
           </div>
@@ -85,4 +85,4 @@ function AboutUs() {
   );
 }
 
-export default AboutUs;
+export default About;
