@@ -16,3 +16,9 @@ footer {
   footer a:hover {
     color: white;
   }
+
+  footer hr{
+    position: relative;
+    left: -5vw;
+    width: 120vw;
+  }
