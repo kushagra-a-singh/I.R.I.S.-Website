@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Header from '../components/Header'; // Adjust the path as necessary
+// import { Link } from 'react-router-dom';
+import Header from '../components/Header'; 
+import Footer from '../components/Footer';
 import styles from './Home.module.css';
-import videoSource from './vid1.mp4'; // Adjust the path as necessary
-import backgroundVideo from './vid2.mp4'; // Adjust the path as necessary
+import videoSource from './vid1.mp4'; 
+import backgroundVideo from './vid2.mp4'; 
 
 function Home() {
   return (
@@ -62,36 +63,7 @@ function Home() {
           </div>
         </main>
 
-        <footer className="bg-dark text-light py-4">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-4">
-                <h5>About</h5>
-                <ul className="list-unstyled">
-                  <li><Link to="/about" className="text-light">Club</Link></li>
-                  <li><Link to="/about" className="text-light">Our Team</Link></li>
-                </ul>
-              </div>
-              <div className="col-md-4">
-                <h5>Events</h5>
-                <ul className="list-unstyled">
-                  <li><Link to="/events" className="text-light">Hackathons</Link></li>
-                  <li><Link to="/events" className="text-light">Podcasts</Link></li>
-                </ul>
-              </div>
-              <div className="col-md-4">
-                <h5>Follow Us</h5>
-                <ul className="list-unstyled">
-                  <li><a href="https://www.instagram.com/iris_mitwpu/" className="text-light" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-                  <li><a href="https://chat.whatsapp.com/Lnu3YpiEM4WDmwCjwDCY6n" className="text-light" target="_blank" rel="noopener noreferrer">WhatsApp Community</a></li>
-                </ul>
-              </div>
-            </div>
-            <div className="text-center mt-4">
-              <p>&copy; 2024 I.R.I.S. All rights reserved</p>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </div>
   );
