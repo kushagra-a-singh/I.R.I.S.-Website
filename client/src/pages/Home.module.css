@@ -105,23 +105,6 @@ html, body {
   background: #c94065;
 }
 
-footer {
-  background-color: #1a1a1a;
-  color: white;
-  padding: 2rem;
-  position: relative;
-  width: 100%;
-}
-
-footer a {
-  color: #ccc;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-footer a:hover {
-  color: white;
-}
 
 @media only screen and (max-width: 768px) {
   .hero h1 {

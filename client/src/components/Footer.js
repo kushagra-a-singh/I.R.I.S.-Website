@@ -4,9 +4,8 @@ import './Footer.css';
 
 function Footer() {
   return (
-    <div>
-        <footer className="bg-dark text-light py-3">
-          <div className="container">
+    <footer className="bg-dark text-light py-3">
+        <div className="container">
             <div className="row px-5">
               <div className="col-md-4 px-5">
                 <h5 class="py-2 px-5">About</h5>
@@ -33,9 +32,8 @@ function Footer() {
             <div className="text-center mt-4">
               <p>&copy; 2024 I.R.I.S. All rights reserved</p>
             </div>
-          </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
   );
 }
 

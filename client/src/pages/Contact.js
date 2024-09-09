@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import styles from './Contact.module.css';
 import backgroundVideo from './vid2.mp4'; // Import the background video file
-import Header from '../components/Header'; // Import the Header component
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -137,38 +137,9 @@ function Contact() {
           </div>
         )}
       </main>
-      <footer>
-        <div className={styles.footerContent}>
-          <div className={styles.footerSection}>
-            <h4>About</h4>
-            <ul>
-              <li><Link to="/about">Club</Link></li>
-              <li><Link to="/about">Our Team</Link></li>
-            </ul>
-          </div>
-          <div className={styles.footerSection}>
-            <h4>Events</h4>
-            <ul>
-              <li><Link to="/events">Hackathons</Link></li>
-              <li><Link to="/events">Podcasts</Link></li>
-            </ul>
-          </div>
-          <div className={styles.footerSection}>
-            <h4>Follow Us</h4>
-            <ul>
-              <li><a href="https://www.instagram.com/iris_mitwpu/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-              <li><a href="https://chat.whatsapp.com/Lnu3YpiEM4WDmwCjwDCY6n" target="_blank" rel="noopener noreferrer">WhatsApp Community</a></li>
-            </ul>
-          </div>
-          <div className={styles.footerSection}>
-            <h4>Contact</h4>
-            <ul>
-              <li><a href="mailto:info@iris-mitwpu.com">Email Us</a></li>
-              <li><a href="tel:+1234567890">Call Us</a></li>
-            </ul>
-          </div>
-        </div>
-      </footer>
+
+      <Footer/>
+
     </div>
   );
 }
