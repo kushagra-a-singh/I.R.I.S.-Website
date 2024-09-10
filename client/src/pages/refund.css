@@ -39,7 +39,6 @@
   position: relative;
   z-index: 2;
   padding: 2rem;
-  backdrop-filter: blur(5px);
 }
 
 /* Headings with Improved Readability */
