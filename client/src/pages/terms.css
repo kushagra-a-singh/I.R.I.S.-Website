@@ -6,101 +6,99 @@
     --light-bg: rgba(255, 255, 255, 0.8); /* Slightly less opaque background */
     --dark-text: #212529;
     --heading-color: #ffffff; /* White color for headings */
-}
-
-/* Page Background with Interactive Animation */
-.terms {
-    width: 100%;
-    color: rgba(255, 255, 255, 0.886);
-    padding: 0;
-    margin: 0;
-    position: relative;
+  }
+  
+  /* Page Background with Interactive Animation */
+  .terms {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure full viewport height */
     background: url('img.jpeg') no-repeat center center,
                 url('https://www.transparenttextures.com/patterns/cubes.png');
     background-size: cover, 50px 50px;
     background-attachment: fixed;
-}
-
-/* Gradient Overlay with Opacity and Transition */
-.terms::before {
+    color: rgba(255, 255, 255, 0.886);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Gradient Overlay with Opacity and Transition */
+  .terms::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(237, 47, 98, 0.6) 0%, rgba(2, 2, 39, 0.6) 75%, rgba(19, 95, 225, 0.6) 100%);
+    background: linear-gradient(135deg, rgba(237, 47, 98, 0.7) 0%, rgba(2, 2, 39, 0.7) 75%, rgba(19, 95, 225, 0.7) 100%);
     z-index: 1;
     transition: opacity 0.2s ease;
-}
-
-/* Bootstrap Container Styling */
-.terms-container {
+  }
+  
+  /* Bootstrap Container Styling */
+  .terms-container {
     position: relative;
     z-index: 2;
     padding: 2rem;
-}
-
-/* Headings with Improved Readability */
-h1, h3 {
+  }
+  
+  /* Headings with Improved Readability */
+  .terms-container h1, .terms-container h3 {
     color: var(--heading-color);
     margin: 0;
-}
-
-h1 {
+  }
+  
+  .terms-container h1 {
     font-size: 48px;
     text-align: center;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4); /* Slightly increased shadow for better readability */
-}
-
-h3 {
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4); /* Subtle shadow for contrast */
+  }
+  
+  .terms-container h3 {
     font-size: 21px;
     text-align: center;
     padding-bottom: 50px;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); /* Adjusted shadow for better readability */
-}
-
-/* Policy Card Styling with Hover Interaction */
-.policy-card {
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow for contrast */
+  }
+  
+  /* Policy Card Styling with Hover Interaction */
+  .policy-card {
     background-color: var(--light-bg);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Slightly deeper shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.policy-card:hover {
+  }
+  
+  .policy-card:hover {
     transform: translateY(-8px); /* Slightly reduced translate distance */
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); /* Increased shadow on hover */
-}
-
-/* Cards Container with Flexbox */
-.cards-container {
+  }
+  
+  /* Cards Container with Flexbox */
+  .cards-container {
     color: var(--dark-text);
     gap: 40px;
     display: flex;
     flex-direction: column;
-}
-
-/* Bootstrap Button Styles */
-.btn-custom {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 12px 24px; /* Increased padding for better touch targets */
-    border-radius: 5px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
-}
-
-.btn-custom:hover {
-    background-color: var(--tertiary-color);
-    transform: translateY(-4px); /* Slightly reduced translate distance */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
-}
-
-/* Global Text Shadow for Enhanced Readability */
-body, p {
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Adjusted text shadow for better readability */
-}
+  }
+  
+  /* Adjust h2 styles */
+  .cards-container h2 {
+    font-size: 21px;
+  }
+  
+  /* Text Styling */
+  .text {
+    color: var(--heading-color);
+  }
+  
+  /* Footer Styling to Ensure It's at the Bottom */
+  footer {
+    z-index: 3;
+    background-color: var(--secondary-color);
+    color: var(--heading-color);
+    padding: 20px;
+    text-align: center;
+  }
+  
