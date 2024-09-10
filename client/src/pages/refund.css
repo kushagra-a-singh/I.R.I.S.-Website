@@ -10,7 +10,7 @@
 
 /* Page Background with Interactive Animation */
 .refund {
-  display: flex;
+    display: flex;
     flex-direction: column;
     min-height: 100vh; /* Ensure full viewport height */
     background: url('img.jpeg') no-repeat center center,
