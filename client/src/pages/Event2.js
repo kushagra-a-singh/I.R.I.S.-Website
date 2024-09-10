@@ -125,10 +125,10 @@ const Event2 = () => {
 
   const checkoutHandler = async () => {
     try {
-      const amount = 1;
+      const amount = 1; // Replace this with the actual amount
       const { data: { key } } = await axios.get("http://localhost:5000/api/getkey");
       const { data: { order } } = await axios.post("http://localhost:5000/api/checkout", { amount });
-
+  
       const options = {
         key: key,
         amount: order.amount,
@@ -137,7 +137,7 @@ const Event2 = () => {
         description: "Hackathon Transaction",
         image: "https://avatars.githubusercontent.com/u/160888318?v=4",
         order_id: order.id,
-        callback_url: `http://localhost:5000/api/paymentverification?leader_email=${formData.leader_email}`,
+        callback_url: `http://localhost:5000/api/paymentverification?leader_email=${encodeURIComponent(formData.leader_email)}`,
         prefill: {
           name: formData.leader_name,
           email: formData.leader_email,
@@ -150,14 +150,14 @@ const Event2 = () => {
           color: "#3399cc",
         },
       };
-
+  
       const razor = new window.Razorpay(options);
       razor.open();
     } catch (err) {
       console.error('Error during checkout request:', err);
     }
   };
-
+  
   const Modal = () => {
     return (
       <div className="modal-overlay">

@@ -1,6 +1,6 @@
 import { instance } from './server.js';
 import crypto from 'crypto';
-import { db } from './server.js'; // Updated import for db
+import { db } from './server.js';
 
 export const checkout = async (req, res) => {
   try {
@@ -18,8 +18,10 @@ export const checkout = async (req, res) => {
 
 export const paymentVerification = async (req, res) => {
   console.log('Request body:', req.body);
+  console.log('Query Params:', req.query); // Add this line to debug
 
   const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+  const { leader_email } = req.query; // Extract the leader_email from query params
 
   if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
     return res.status(400).json({
@@ -29,7 +31,6 @@ export const paymentVerification = async (req, res) => {
   }
 
   const body = razorpay_order_id + "|" + razorpay_payment_id;
-
   const expectedSignature = crypto.createHmac('sha256', process.env.RAZORPAY_API_SECRET)
     .update(body.toString())
     .digest('hex');
@@ -40,9 +41,8 @@ export const paymentVerification = async (req, res) => {
   const isAuthentic = expectedSignature === razorpay_signature;
 
   if (isAuthentic) {
-    // Insert new row into event2_razorpay_payments table
-    const query = `INSERT INTO event2_razorpay_payments (razorpay_payment_id, razorpay_order_id, razorpay_signature) VALUES (?, ?, ?)`;
-    db.query(query, [razorpay_payment_id, razorpay_order_id, razorpay_signature], (err, result) => {
+    const query = `INSERT INTO event2_razorpay_payments (razorpay_payment_id, razorpay_order_id, razorpay_signature, leader_email) VALUES (?, ?, ?, ?)`;
+    db.query(query, [razorpay_payment_id, razorpay_order_id, razorpay_signature, leader_email], (err, result) => {
       if (err) {
         console.error('Error inserting payment details:', err);
         res.status(500).json({
@@ -50,7 +50,7 @@ export const paymentVerification = async (req, res) => {
           error: 'Failed to insert payment details',
         });
       } else {
-        res.redirect(`http://localhost:3000/paymentsuccess?reference=${razorpay_payment_id}`);
+        res.redirect(`http://localhost:3000/paymentsuccess?reference=${razorpay_payment_id}&leader_email=${encodeURIComponent(leader_email)}`);
       }
     });
   } else {

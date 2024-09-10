@@ -1,8 +1,8 @@
 import express from 'express';
 import 'dotenv/config';
 import db from './server.js';
-import paymentRoutes from "./paymentRoutes.js";
-import cors from "cors";
+import paymentRoutes from './paymentRoutes.js';
+import cors from 'cors';
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -45,79 +45,28 @@ app.post('/api/contact', (req, res) => {
 app.post('/api/event2', (req, res) => {
   try {
     const {
-      team_name,
-      leader_name,
-      leader_phone,
-      leader_email,
-      leader_prn,
-      leader_branch,
-      member2_name,
-      member2_phone,
-      member2_email,
-      member2_prn,
-      member2_branch,
-      member3_name,
-      member3_phone,
-      member3_email,
-      member3_prn,
-      member3_branch,
-      member4_name,
-      member4_phone,
-      member4_email,
-      member4_prn,
-      member4_branch,
+      team_name, leader_name, leader_phone, leader_email, leader_prn, leader_branch,
+      member2_name, member2_phone, member2_email, member2_prn, member2_branch,
+      member3_name, member3_phone, member3_email, member3_prn, member3_branch,
+      member4_name, member4_phone, member4_email, member4_prn, member4_branch,
     } = req.body;
 
     const query = `
       INSERT INTO event2_registrations (
-        team_name,
-        leader_name,
-        leader_phone,
-        leader_email,
-        leader_prn,
-        leader_branch,
-        member2_name,
-        member2_phone,
-        member2_email,
-        member2_prn,
-        member2_branch,
-        member3_name,
-        member3_phone,
-        member3_email,
-        member3_prn,
-        member3_branch,
-        member4_name,
-        member4_phone,
-        member4_email,
-        member4_prn,
-        member4_branch
+        team_name, leader_name, leader_phone, leader_email, leader_prn, leader_branch,
+        member2_name, member2_phone, member2_email, member2_prn, member2_branch,
+        member3_name, member3_phone, member3_email, member3_prn, member3_branch,
+        member4_name, member4_phone, member4_email, member4_prn, member4_branch
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
     console.log('Query:', query);
     db.query(
       query,
       [
-        team_name,
-        leader_name,
-        leader_phone,
-        leader_email,
-        leader_prn,
-        leader_branch,
-        member2_name,
-        member2_phone,
-        member2_email,
-        member2_prn,
-        member2_branch,
-        member3_name,
-        member3_phone,
-        member3_email,
-        member3_prn,
-        member3_branch,
-        member4_name,
-        member4_phone,
-        member4_email,
-        member4_prn,
-        member4_branch,
+        team_name, leader_name, leader_phone, leader_email, leader_prn, leader_branch,
+        member2_name, member2_phone, member2_email, member2_prn, member2_branch,
+        member3_name, member3_phone, member3_email, member3_prn, member3_branch,
+        member4_name, member4_phone, member4_email, member4_prn, member4_branch,
       ],
       (err, result) => {
         if (err) {
@@ -135,9 +84,9 @@ app.post('/api/event2', (req, res) => {
 });
 
 // Use payment routes
-app.use("/api", paymentRoutes);
+app.use('/api', paymentRoutes);
 
-app.get("/api/getkey", (req, res) =>
+app.get('/api/getkey', (req, res) => 
   res.status(200).json({ key: process.env.RAZORPAY_API_KEY })
 );
 
