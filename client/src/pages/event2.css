@@ -2,6 +2,8 @@
   font-family: 'Roboto', sans-serif;
   color: #1a1a1a;
   background-color: #18206f;
+  position: relative;
+  overflow: hidden;
 }
 
 .event2-title {
