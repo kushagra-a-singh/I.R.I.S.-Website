@@ -175,21 +175,7 @@ const Event2 = () => {
 
   return (
     <div className="event2">
-      <header>
-        <nav>
-          <ul className="navbar">
-            <li className="logo">
-              <Link to="/">
-                <img src="/logo.png" alt="Logo" />
-              </Link>
-            </li>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/events">Events</Link></li>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
-          </ul>
-        </nav>
-      </header>
+      <Header />
       <main>
         <h1 className="title">Upcoming Event: September Hackathon</h1>
         <p>This is a short description of the event.</p>
@@ -371,9 +357,7 @@ const Event2 = () => {
           {showModal && <Modal />}
         </div>
       </main>
-      <footer>
-        <p>&copy; 2024 Event Organizers. All rights reserved.</p>
-      </footer>
+      <Footer />
     </div>
   );
 };
