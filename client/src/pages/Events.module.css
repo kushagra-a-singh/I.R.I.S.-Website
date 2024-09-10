@@ -1,0 +1,103 @@
+/* Events.module.css */
+.events {
+  font-family: 'Roboto', sans-serif;
+  background: url('./event.jpg') no-repeat center center/cover; /* Keep the full-size image */
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 6rem; /* Prevent merging with the header */
+}
+
+/* Linear gradient overlay */
+.events::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(23, 37, 90, 0.8), rgba(201, 64, 101, 0.8)); /* Darker gradient */
+  z-index: 1;
+}
+
+.mainContent {
+  position: relative;
+  z-index: 2; /* Ensure content is above the gradient overlay */
+  padding: 2rem;
+  color: #f5f5f5;
+}
+
+.title {
+  color: #f5f5f5;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.upcoming, .past, .podcastTitle {
+  color: #ffffff;
+  margin-top: 2rem;
+}
+
+.eventList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 2rem;
+  z-index: 2;
+}
+
+.eventCard {
+  width: 600px;
+  max-width: 800px;
+  margin-bottom: 2rem;
+  background-color: rgba(213, 197, 200, 0.9); /* Slightly translucent card background */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.eventCard img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.eventCard h2 {
+  padding: 1rem;
+  margin: 0;
+  color: #000;
+}
+
+.eventCard p {
+  padding: 0 1rem 1rem;
+  color: #333;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #007bff !important;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  margin: 0 1rem 1rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #0056b3 !important;
+  color: #f7f7f7 !important;
+}
+
+/* Header styling */
+header {
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.8); /* Opaque header to distinguish from content */
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+}

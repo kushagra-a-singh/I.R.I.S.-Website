@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Events.css';
+import styles from './Events.module.css'; // Import CSS Module
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -18,7 +18,7 @@ function Events() {
     id: 2,
     title: "Sept Hackathon",
     description: "Hackathon details to be added soon. Registration starts from 13th Sept, 2024. Stay Tuned!",
-    image: "./logo2.png",
+    image: "./sephackathon.png",
     date: "To be held on: 26/09/2024 || ",
     time: "04:00 PM",
   };
@@ -33,14 +33,16 @@ function Events() {
   };
 
   return (
-    <div className="events">
+    <div className={styles.events}>
       <Header />
-      <main>
-        <h1 className="title">Events</h1>
-        <section className="upcoming-events">
-          <h2 className="upcoming">Upcoming Events</h2>
-          <div className="event-list">
-            <div key={upcomingEvent.id} className="event-card">
+      <main className={styles.mainContent}>
+        <h1 className={styles.title}>Events</h1>
+        
+        {/* Upcoming Events Section */}
+        <section className={styles.upcomingEvents}>
+          <h2 className={styles.upcoming}>Upcoming Events</h2>
+          <div className={styles.eventList}>
+            <div key={upcomingEvent.id} className={styles.eventCard}>
               <img src={upcomingEvent.image} alt={upcomingEvent.title} />
               <h2>{upcomingEvent.title}</h2>
               <p>{upcomingEvent.description}</p>
@@ -48,16 +50,18 @@ function Events() {
                 <span>{upcomingEvent.date}</span>
                 <span>{upcomingEvent.time}</span>
               </p>
-              <Link to={`/events/${upcomingEvent.id}`} className="btn">
+              <Link to={`/events/${upcomingEvent.id}`} className={styles.btn}>
                 REGISTRATION OPEN!
               </Link>
             </div>
           </div>
         </section>
-        <section className="past-events">
-          <h2 className="past">Past Events</h2>
-          <div className="event-list">
-            <div key={pastEvent.id} className="event-card">
+        
+        {/* Past Events Section */}
+        <section className={styles.pastEvents}>
+          <h2 className={styles.past}>Past Events</h2>
+          <div className={styles.eventList}>
+            <div key={pastEvent.id} className={styles.eventCard}>
               <img src={pastEvent.image} alt={pastEvent.title} />
               <h2>{pastEvent.title}</h2>
               <p>{pastEvent.description}</p>
@@ -65,16 +69,18 @@ function Events() {
                 <span>{pastEvent.date}</span>
                 <span>{pastEvent.time}</span>
               </p>
-              <Link to={`/events/${pastEvent.id}`} className="btn">
+              <Link to={`/events/${pastEvent.id}`} className={styles.btn}>
                 Click to know more
               </Link>
             </div>
           </div>
         </section>
-        <section className="podcasts">
-          <h2 className="podcast-title">Podcasts</h2>
-          <div className="event-list">
-            <div key={podcast.id} className="event-card">
+        
+        {/* Podcast Section */}
+        <section className={styles.podcasts}>
+          <h2 className={styles.podcastTitle}>Podcasts</h2>
+          <div className={styles.eventList}>
+            <div key={podcast.id} className={styles.eventCard}>
               <img src={podcast.image} alt={podcast.title} />
               <h2>{podcast.title}</h2>
               <p>{podcast.description}</p>
@@ -82,7 +88,12 @@ function Events() {
                 <span>{podcast.date}</span>
                 <span>{podcast.length}</span>
               </p>
-              <a href="https://www.youtube.com/watch?v=sFbYHID_w2c" target="_blank" rel="noopener noreferrer" className="btn">
+              <a
+                href="https://www.youtube.com/watch?v=sFbYHID_w2c"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.btn}
+              >
                 Listen now
               </a>
             </div>

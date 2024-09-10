@@ -15,7 +15,7 @@
 }
 
 .navbar .container {
-  max-width: 80vw;
+  max-width: 100vw;
 }
 
 .navbar-collapse .navbar-nav {
@@ -32,9 +32,9 @@
 
 .nav-item {
   position: relative;
-  padding-left: 0.5em;
+  padding-left: 0.7em;
   font: normal normal normal 20px/24px Roboto;
-  padding-right: 0.5em;
+  padding-right: 0.7em;
 }
 
 .nav-link {
