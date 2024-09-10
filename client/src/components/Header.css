@@ -7,6 +7,7 @@
   background-color: rgba(0, 0, 0, 0.7); /* Default dark color */
   transition: background-color 0.3s ease; /* Smooth transition */
   padding: 0.8rem 0;
+  align-content: center;
 }
 
 .navbar-dark-scrolled {
@@ -14,11 +15,15 @@
 }
 
 .navbar .container {
-  max-width: 100%;
+  max-width: 80vw;
 }
 
 .navbar-collapse .navbar-nav {
   position: relative;
+}
+
+.navbar-brand{
+  justify-self: center;
 }
 
 .navbar-brand .logo-img {

@@ -19,8 +19,8 @@ function Header() {
   return (
     <header className={`fixed-top ${scrolled ? 'scrolled' : ''}`}>
       <nav className={`navbar navbar-expand-lg navbar-dark px-0 mx-0 ${scrolled ? 'navbar-dark-scrolled' : ''}`}>
-        <div className="container py-0 px-0 align-content-center mx-5">
-          <Link className="navbar-brand" to="/">
+        <div className="container py-0 px-0 align-content-center  mx-5">
+          <Link className="navbar-brand " to="/">
             <img src="/logo.png" alt="Logo" className="logo-img" />
           </Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

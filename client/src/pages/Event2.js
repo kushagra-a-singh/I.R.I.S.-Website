@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './event2.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const Event2 = () => {
   const [formData, setFormData] = useState({
