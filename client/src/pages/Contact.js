@@ -1,7 +1,9 @@
 import React, { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './Contact.css';
+import styles from './Contact.module.css';
+import backgroundVideo from './vid2.mp4'; // Import the background video file
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -52,26 +54,22 @@ function Contact() {
   };
 
   return (
-    <div className="contact">
-      <header>
-        <nav>
-          <ul className="navbar">
-            <li className="logo">
-              <Link to="/">
-                <img src="/logo.png" alt="Logo" />
-              </Link>
-            </li>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/events">Events</Link></li>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
-          </ul>
-        </nav>
-      </header>
-      <main>
-        <h1 className="contact-us-title">Contact Us</h1>
+    <div className={styles.contact}>
+      <div className={styles.videoBackground}>
+        <video autoPlay muted loop>
+          <source src={backgroundVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div className={styles.overlay}></div>
+      <Header /> {/* Import Header component */}
+      <main className={styles.content}>
+        <h1 className={styles.contactUsTitle}>Contact Us</h1>
+        <p className={styles.titleDesc}>
+          If you have a new and innovative scalable project, unique idea, or research you'd like to pursue, fill out the form below. We're here to help guide and support you!
+        </p>
         <form ref={formRef} onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor="name">Name*</label>
             <input
               type="text"
@@ -82,7 +80,7 @@ function Contact() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor="email">Email*</label>
             <input
               type="email"
@@ -93,7 +91,7 @@ function Contact() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor="phone">Phone Number*</label>
             <input
               type="tel"
@@ -104,7 +102,7 @@ function Contact() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor="subject">Subject*</label>
             <input
               type="text"
@@ -115,7 +113,7 @@ function Contact() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor="message">Description*</label>
             <textarea
               id="message"
@@ -125,13 +123,13 @@ function Contact() {
               required
             />
           </div>
-          <div className="form-group">
-            <button type="submit" className="btn">Send Message</button>
+          <div className={styles.formGroup}>
+            <button type="submit">Send Message</button>
           </div>
         </form>
         {showNotification && (
-          <div className="notification-popup">
-            <div className="notification-content">
+          <div className={styles.notificationPopup}>
+            <div className={styles.notificationContent}>
               <h2>Message sent successfully!</h2>
               <p>Your message has been sent. Thank you for reaching out!</p>
               <button onClick={handleOkayButton}>Okay</button>
@@ -139,43 +137,9 @@ function Contact() {
           </div>
         )}
       </main>
-      
-      <footer>
-        <div className="footer-content">
-          <div className="footer-section">
-            <h4>About</h4>
-            <ul>
-              <li><Link to="/about">Club</Link></li>
-              <li><Link to="/about">Our Team</Link></li>
-            </ul>
-          </div>
-          <div className="footer-section">
-            <h4>Events</h4>
-            <ul>
-              <li><Link to="/events">Hackathons</Link></li>
-              <li><Link to="/events">Podcasts</Link></li>
-            </ul>
-          </div>
-          <div className="footer-section">
-            <h4>Follow Us</h4>
-            <ul>
-              <li><a href="https://www.instagram.com/iris_mitwpu/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-              <li><a href="https://chat.whatsapp.com/Lnu3YpiEM4WDmwCjwDCY6n" target="_blank" rel="noopener noreferrer">WhatsApp Community</a></li>
-            </ul>
-          </div>
-          <div className="footer-section">
-            <h4>Policies</h4>
-            <ul>
-              <li><Link to="/policy">Privacy Policy</Link></li>
-              <li><Link to="/terms">Terms and Conditions</Link></li>
-              <li><Link to="/refund">Refund Policy</Link></li>
-            </ul>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <p>&copy; 2024 I.R.I.S. All rights reserved</p>
-        </div>
-      </footer>
+
+      <Footer/>
+
     </div>
   );
 }

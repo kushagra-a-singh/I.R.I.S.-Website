@@ -2,19 +2,21 @@ import express from 'express';
 import 'dotenv/config';
 import db from './server.js';
 import paymentRoutes from "./paymentRoutes.js";
+import cors from "cors";
 
 const app = express();
 const port = process.env.PORT || 5000;
 
+// Middleware for CORS
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
+}));
+
 // Middleware to parse JSON request bodies
 app.use(express.json());
-
-// Middleware for CORS
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+app.use(express.urlencoded({ extended: true }));
 
 // Define routes
 app.get('/api/home', (req, res) => {
@@ -132,13 +134,17 @@ app.post('/api/event2', (req, res) => {
   }
 });
 
-process.on('unhandledRejection', (reason, promise) => {
-  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
-});
-
 // Use payment routes
-app.use('/api', paymentRoutes);
+app.use("/api", paymentRoutes);
+
+app.get("/api/getkey", (req, res) =>
+  res.status(200).json({ key: process.env.RAZORPAY_API_KEY })
+);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
 });

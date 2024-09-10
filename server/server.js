@@ -28,3 +28,4 @@ export const instance = new Razorpay({
 //console.log('Razorpay instance:', instance);
 
 export default db;
+export { db };

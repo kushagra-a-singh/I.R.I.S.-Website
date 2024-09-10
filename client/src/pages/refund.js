@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './refund.scss'
+import './refund.css'
 
 function Refund() {
   return (
@@ -29,13 +29,10 @@ function Refund() {
       <div class="policy-card">
   <h2>Eligibility for Refunds</h2>
   <p>
-    <strong>Full Refund:</strong> Participants are eligible for a full refund if they cancel their registration at least 30 days before the hackathon start date.
+    <strong>Full Refund:</strong> Participants are eligible for a full refund if they cancel their registration 7 days before the hackathon start date.
   </p>
   <p>
-    <strong>Partial Refund:</strong> Participants who cancel within 10 days before the event may be eligible for a partial refund of 45% of the registration fee.
-  </p>
-  <p>
-    <strong>No Refunds:</strong> No refunds will be issued for cancellations made after the hackathon has started or for participants who do not attend the event.
+    <strong>No Refunds:</strong> No refunds will be issued for cancellations made less than 7 days before the hackathon start date or for participants who do not attend the event.
   </p>
 </div>
 

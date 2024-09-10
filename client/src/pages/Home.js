@@ -1,91 +1,70 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './Home.css';
+// import { Link } from 'react-router-dom';
+import Header from '../components/Header'; 
+import Footer from '../components/Footer';
+import styles from './Home.module.css';
+import videoSource from './vid1.mp4'; 
+import backgroundVideo from './vid2.mp4'; 
 
 function Home() {
   return (
-    <div className="home">
-      <header>
-        <nav>
-          <ul className="navbar">
-            <li className="logo">
-              <Link to="/">
-                <img src="/logo.png" alt="Logo" />
-              </Link>
-            </li>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/events">Events</Link></li>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
-          </ul>
-        </nav>
-      </header>
-      <main>
-        <div className="hero">
-          <div className="hero-text">
-            <h1>I.R.I.S</h1>
-            <h2>Innovation Research & Intelligence Support</h2>
-            <p>Empowering innovation and fostering technological advancements</p>
-          </div>
-          <div className="hero-image">
-            <img src="/logo.png" alt="Hero Image" />
-          </div>
-        </div>
-        <div className="journey">
-          <h3 className="journey-title">JOIN US ON THE I.R.I.S JOURNEY</h3>
-          <div className="journey-steps">
-            <div className="step">
-              <h4>Bring Your Idea</h4>
-              <p>Transform your concepts into reality with our supportive community.</p>
-            </div>
-            <div className="step">
-              <h4>Collaborate and Develop</h4>
-              <p>Work with like-minded individuals to refine and expand your projects.</p>
-            </div>
-            <div className="step">
-              <h4>Achieve and Launch</h4>
-              <p>Bring your innovations to life and make a lasting impact in the tech world.</p>
-            </div>
-          </div>
-        </div>
-      </main>
+    <div className={styles.home}>
+      <video className={styles.backgroundVideo} autoPlay muted loop>
+        <source src={backgroundVideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
-      <footer>
-        <div className="footer-content">
-          <div className="footer-section">
-            <h4>About</h4>
-            <ul>
-              <li><Link to="/about">Club</Link></li>
-              <li><Link to="/about">Our Team</Link></li>
-            </ul>
+      <Header />
+
+      <div className={styles.overlay}>
+        <main className="flex-grow-1">
+          <div className={`${styles.hero} text-white d-flex align-items-center`}>
+            <div className="container">
+              <div className="row align-items-center">
+                <div className="col-lg-6 text-center text-lg-start">
+                  <h1 className={`${styles.wordart} display-3`}>I.R.I.S</h1>
+                  <h2 className="lead">Innovation Research & Intelligence Support</h2>
+                  <p className="mb-4">Empowering innovation and fostering technological advancements.</p>
+                </div>
+                <div className="col-lg-6 text-center">
+                  <video className={styles.heroVideo} autoPlay loop muted>
+                    <source src={videoSource} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="footer-section">
-            <h4>Events</h4>
-            <ul>
-              <li><Link to="/events">Hackathons</Link></li>
-              <li><Link to="/events">Podcasts</Link></li>
-            </ul>
+
+          <div className={`${styles.journey} py-5 text-center text-light`}>
+            <div className="container">
+              <h3 className={styles.journeyTitle}>Join us on the I.R.I.S Journey</h3>
+              <div className="row g-4">
+                <div className="col-md-4">
+                  <div className={`${styles.step} p-4 shadow-sm h-100`}>
+                    <h4>Bring Your Idea</h4>
+                    <p>Transform your concepts into reality with our supportive community.</p>
+                  </div>
+                </div>
+                <div className="col-md-4">
+                  <div className={`${styles.step} p-4 shadow-sm h-100`}>
+                    <h4>Collaborate and Develop</h4>
+                    <p>Work with like-minded individuals to refine and expand your projects.</p>
+                  </div>
+                </div>
+                <div className="col-md-4">
+                  <div className={`${styles.step} p-4 shadow-sm h-100`}>
+                    <h4>Achieve and Launch</h4>
+                    <p>Bring your innovations to life and make a lasting impact in the tech world.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="footer-section">
-            <h4>Follow Us</h4>
-            <ul>
-              <li><a href="https://www.instagram.com/iris_mitwpu/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-              <li><a href="https://chat.whatsapp.com/Lnu3YpiEM4WDmwCjwDCY6n" target="_blank" rel="noopener noreferrer">WhatsApp Community</a></li>
-            </ul>
-          </div>
-          <div className="footer-section">
-            <h4>Policies</h4>
-            <ul>
-              <li><Link to="/policy">Privacy Policy</Link></li>
-              <li><Link to="/terms">Terms and Conditions</Link></li>
-              <li><Link to="/refund">Refund Policy</Link></li>
-            </ul>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <p>&copy; 2024 I.R.I.S. All rights reserved</p>
-        </div>
-      </footer>
+        </main>
+
+        <Footer />
+      </div>
     </div>
   );
 }

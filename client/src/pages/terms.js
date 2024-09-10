@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './terms.scss'
+import './terms.css'
 
 function Terms() {
   return (
