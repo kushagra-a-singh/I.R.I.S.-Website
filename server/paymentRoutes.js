@@ -1,6 +1,6 @@
+// paymentRoutes.js
 import express from "express";
-import { checkout } from "./paymentController.js";
-import { paymentVerification } from "./paymentController.js";
+import { checkout, paymentVerification } from "./paymentController.js"; // Correct imports
 
 const router = express.Router();
 

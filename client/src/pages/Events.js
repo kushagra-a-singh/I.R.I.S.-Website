@@ -101,7 +101,6 @@ function Events() {
         </section>
       </main>
 
-      <Footer />
     </div>
   );
 }

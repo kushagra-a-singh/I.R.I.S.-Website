@@ -84,7 +84,7 @@ function Home() {
           </div>
         </main>
 
-        <Footer />
+        
       </div>
     </div>
   );

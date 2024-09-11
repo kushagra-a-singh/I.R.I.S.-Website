@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Event from './pages/Events';
 import Event1 from './pages/Event1';
@@ -13,7 +13,7 @@ import ScrollToTop from './ScrollToTop';
 
 function AppRouter() {
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -27,7 +27,7 @@ function AppRouter() {
         <Route path="/terms" element={<Terms />} />
         <Route path="/PaymentSuccess" element={<PaymentSuccess />} />
       </Routes>
-    </Router>
+    </>
   );
 }
 

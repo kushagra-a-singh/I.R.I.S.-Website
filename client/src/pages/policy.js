@@ -61,7 +61,6 @@ function Policy() {
         </div>
       </main>
 
-      <Footer /> {/* Footer component at the bottom */}
     </div>
   );
 }

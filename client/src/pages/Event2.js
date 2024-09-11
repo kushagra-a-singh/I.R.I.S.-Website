@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { supabase } from '../supabase'; // Import the Supabase client
 import './event2.css';
+import axios from 'axios';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -88,10 +88,15 @@ const Event2 = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/event2', formData);
+      // Insert form data into Supabase
+      const { data, error } = await supabase
+        .from('event2_registrations') // Make sure this matches your Supabase table name
+        .insert([{ ...formData, created_at: new Date().toISOString() }]);
 
-      if (response.data.success) {
-        console.log('Registration successful!');
+      if (error) {
+        console.error('Error inserting data:', error);
+      } else {
+        console.log('Registration successful:', data);
         setShowModal(true);
         setFormData({
           team_name: '',
@@ -117,8 +122,6 @@ const Event2 = () => {
           member4_branch: '',
         });
         setErrors({});
-      } else {
-        console.error('Error registering:', response.data.error);
       }
     } catch (err) {
       console.error('Error submitting form:', err);
@@ -357,7 +360,7 @@ const Event2 = () => {
           {showModal && <Modal />}
         </div>
       </main>
-      <Footer />
+      
     </div>
   );
 };

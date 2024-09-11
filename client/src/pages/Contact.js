@@ -1,7 +1,7 @@
-import React, { useState, useRef } from 'react';
-import axios from 'axios';
+import React, { useState, useRef, useEffect } from 'react';
+import { supabase } from '../supabase';
 import styles from './Contact.module.css';
-import backgroundVideo from './vid2.mp4'; // Import the background video file
+import backgroundVideo from './vid2.mp4';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -16,13 +16,14 @@ function Contact() {
   const [showNotification, setShowNotification] = useState(false);
   const formRef = useRef(null);
 
+  useEffect(() => {
+    console.log('Checking Supabase connection...');
+    // Fetch existing data if needed
+  }, []);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  const axiosInstance = axios.create({
-    baseURL: 'http://localhost:5000/api',
-  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,8 +32,17 @@ function Contact() {
         ...formData,
         created_at: new Date().toISOString(),
       };
-      const response = await axiosInstance.post('/contact', formDataWithTimestamp);
-      if (response.data.success) {
+
+      console.log('Inserting data into Supabase...');
+      // Insert form data into Supabase
+      const { data, error } = await supabase
+        .from('contacts') // Make sure this matches your Supabase table name
+        .insert(formDataWithTimestamp);
+
+      if (error) {
+        console.error('Error inserting data:', error);
+      } else {
+        console.log('Data inserted:', data);
         setShowNotification(true);
         setFormData({
           name: '',
@@ -41,8 +51,6 @@ function Contact() {
           subject: '',
           message: '',
         });
-      } else {
-        console.error('Error submitting form:', response.data.error);
       }
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -62,7 +70,7 @@ function Contact() {
         </video>
       </div>
       <div className={styles.overlay}></div>
-      <Header /> {/* Import Header component */}
+      <Header />
       <main className={styles.content}>
         <h1 className={styles.contactUsTitle}>Contact Us</h1>
         <p className={styles.titleDesc}>
@@ -137,8 +145,6 @@ function Contact() {
           </div>
         )}
       </main>
-
-      <Footer/>
 
     </div>
   );

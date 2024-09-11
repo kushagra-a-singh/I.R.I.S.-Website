@@ -1,14 +1,27 @@
-import { instance } from './server.js';
+// paymentController.js
 import crypto from 'crypto';
-import { db } from './server.js'; // Updated import for db
+import supabase from './supabase.js'; // Correct import for default export
+import { instance } from './server.js'; // Import Razorpay instance
 
 export const checkout = async (req, res) => {
   try {
     const options = {
       amount: Number(req.body.amount * 100),
-      currency: "INR",
+      currency: 'INR',
     };
+
+    console.log('Creating Razorpay order with options:', options);
+
     const order = await instance.orders.create(options);
+
+    if (!order) {
+      return res.status(500).json({
+        success: false,
+        error: 'Failed to create order',
+      });
+    }
+
+    console.log('Razorpay order response:', order);
     res.status(200).json({ success: true, order });
   } catch (error) {
     console.error('Error creating order:', error);
@@ -40,19 +53,30 @@ export const paymentVerification = async (req, res) => {
   const isAuthentic = expectedSignature === razorpay_signature;
 
   if (isAuthentic) {
-    // Insert new row into event2_razorpay_payments table
-    const query = `INSERT INTO event2_razorpay_payments (razorpay_payment_id, razorpay_order_id, razorpay_signature) VALUES (?, ?, ?)`;
-    db.query(query, [razorpay_payment_id, razorpay_order_id, razorpay_signature], (err, result) => {
-      if (err) {
-        console.error('Error inserting payment details:', err);
-        res.status(500).json({
+    try {
+      // Insert payment details into Supabase
+      const { data, error } = await supabase
+        .from('event2_razorpay_payments')
+        .insert([
+          { razorpay_payment_id, razorpay_order_id, razorpay_signature, created_at: new Date().toISOString() }
+        ]);
+
+      if (error) {
+        console.error('Error inserting payment details:', error);
+        return res.status(500).json({
           success: false,
           error: 'Failed to insert payment details',
         });
-      } else {
-        res.redirect(`http://localhost:3000/paymentsuccess?reference=${razorpay_payment_id}`);
       }
-    });
+
+      res.redirect(`http://localhost:3000/paymentsuccess?reference=${razorpay_payment_id}`);
+    } catch (error) {
+      console.error('Error with Supabase:', error);
+      res.status(500).json({
+        success: false,
+        error: 'Failed to insert payment details',
+      });
+    }
   } else {
     res.status(400).json({
       success: false,

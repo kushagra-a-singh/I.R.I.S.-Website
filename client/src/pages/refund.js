@@ -45,7 +45,7 @@ function Refund() {
           </div>
         </div>
       </main>
-      <Footer />
+      
     </div>
   );
 }

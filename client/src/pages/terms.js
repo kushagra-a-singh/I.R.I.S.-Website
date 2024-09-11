@@ -60,7 +60,7 @@ function Terms() {
           </div>
         </div>
       </main>
-      <Footer />
+      
     </div>
   );
 }
