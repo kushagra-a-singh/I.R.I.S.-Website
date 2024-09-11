@@ -144,7 +144,7 @@ textarea {
 }
 
 .successMessage {
-  background-color: #d4edda;
+  background-color: #81e698; /* Darker green color */
   color: #155724;
   padding: 2rem;
   border-radius: 8px;
@@ -160,7 +160,7 @@ textarea {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #d4edda;
+  background-color: #81e698; /* Darker green color */
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

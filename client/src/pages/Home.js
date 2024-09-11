@@ -27,7 +27,7 @@ function Home() {
                   <h2 className={`${styles.registrationTitle} display-4`}>Innovation Hackathon</h2>
                   <p className="lead">Be part of the innovation and research.</p>
                   {/* Use Link component for navigation */}
-                  <Link to="/events/event2" className={styles.registerBtn}>
+                  <Link to="/events/2" className={styles.registerBtn}>
                     Register Now
                   </Link>
                 </div>
